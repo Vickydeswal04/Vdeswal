@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+from datetime import datetime
+
+df=pd.read_csv(r"C:\Users\91789\Downloads\transactions.csv")
+df
+#partA:Compute mean of a series grouped by another series
+
+dfmean=df.groupby('date')['transactions'].mean()
+dfmean
+
+#partB:Fill an intermittent time series to replace all missing dates with values of previous non-missing date.
+df['date'].fillna(method="ffill" , inplace=True)
+df
+df.isnull().sum()
+df
+
+#partC:Perform appropriate year-month string to dates conversion.
+
+df['date']
+
+date=list()
+from datetime import datetime
+for i in df['date']:
+    date.append(datetime.strptime(str(i),'%d-%m-%Y'))
+date
+
+#partD:Split a dataset to group by two columns and then sort the aggregated results within the groups.
+dfs=df.groupby(['date','store_nbr']).agg({'transactions' :sum })
+res=dfs['transactions'].groupby(level=1)
+print(res.nlargest())
+
+#partE:Split a given dataframe into groups with bin counts.
+dfbin=pd.cut(df['store_nbr'],bins=5)
+dfbin

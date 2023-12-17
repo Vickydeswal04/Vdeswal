@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+#taking the data from excel files
+dfDay1 = pd.read_excel('Day1.xlsx')
+dfDay2 = pd.read_excel('Day2.xlsx')
+print(dfDay1.head(),"\n")
+print(dfDay2.head())
+
+#partA: Perform merging of the two dataframes to find the names of students who had attended the workshop on both days.
+
+pd.merge(dfDay1,dfDay2,how='inner',on='Name')
+
+
+#partB:Find names of all students who have attended workshop on either of the days.
+
+either_day = pd.merge(dfDay1,dfDay2,how='outer',on='Name')
+either_day
+#partC:Merge two data frames row-wise and find the total number of records in the data frame.
+#using the either day from part b
+
+either_day['Name'].count() 
+
+#partD: Merge two data frames and use two columns names and duration as multi-row indexes. 
+#Generate descriptive statistics for this multi-index
+
+both_days = pd.merge(dfDay1,dfDay2,how='outer',on=['Name','Duration']).copy() #  creates a copy of an existing list
+
+both_days.fillna(value='-',inplace=True) # to fill out the missing values in the given series object
+
+both_days.set_index(['Name','Duration']) # a method to set a List as index of a Data Frame

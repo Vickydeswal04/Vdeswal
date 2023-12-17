@@ -1,0 +1,21 @@
+import numpy as np
+import pandas as pd
+data=pd.read_excel(r"C:\Users\91789\OneDrive\Documents\Practical8.xlsx")
+data
+
+#partA:Calculate and display familywise gross monthly income.
+data.groupby(['Name'])['MonthlyIncome(Rs.)'].sum()
+
+#partB:Calculate and display the member with the highest monthly income in a family.
+data.groupby(['Name'])['MonthlyIncome(Rs.)'].max()
+
+#partC:Calculate and display monthly income of all members with income greater than Rs. 60000.00.
+df=data[data['MonthlyIncome(Rs.)'] >60000.00]
+df
+
+#partD:Calculate and display the average monthly income of the female members in the Shah family.
+df1=data.groupby(['Name','Gender'])['MonthlyIncome(Rs.)'].mean()
+df1
+
+df2=data[(data['Name']=='Shah') & (data['Gender']=='Female')]['MonthlyIncome(Rs.)'].mean()    
+df2

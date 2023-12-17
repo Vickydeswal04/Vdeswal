@@ -1,0 +1,70 @@
+import numpy as np
+
+# Task a
+random_array = np.random.randint(0, 100, size=(3, 3))
+print("Random Array:")
+print(random_array)
+print("\n")
+
+
+
+
+mean = np.mean(random_array, axis=1)
+std_dev = np.std(random_array, axis=1)
+variance = np.var(random_array, axis=1)
+
+print("Mean along the second axis:", mean)
+print("\n")
+print("Standard Deviation along the second axis:", std_dev)
+print("\n")
+print("Variance along the second axis:", variance)
+print("\n")
+
+# Task b
+B = np.array([56, 48, 22, 41, 78, 91, 24, 46, 8, 33])
+sorted_indices = np.argsort(B)
+print("Indices of sorted elements:", sorted_indices)
+print("\n")
+
+
+
+
+# Task c
+m = int(input("Enter number of rows (m): "))
+n = int(input("Enter number of columns (n): "))
+array = np.random.randint(0, 100, size=(m, n))
+print("Array:")
+print(array)
+print("\n")
+print("Shape of the array:", array.shape)
+print("\n")
+print("Type of the array:", array.dtype)
+print("\n")
+print("Data type of the array:", array.dtype)
+print("\n")
+
+reshaped_array = array.reshape(n, m)
+print("Reshaped Array:")
+print(reshaped_array)
+print("\n")
+
+
+
+
+# Task d
+given_array = np.array([0, 2, 0, 5, 0, np.nan, 7, np.nan])
+is_zero = np.where(given_array == 0)
+is_non_zero = np.where(given_array != 0)
+is_nan = np.where(np.isnan(given_array))
+
+print("Indices of zero elements:", is_zero)
+print("Indices of non-zero elements:", is_non_zero)
+print("Indices of NaN elements:", is_nan)
+
+
+
+
+
+
+
+
